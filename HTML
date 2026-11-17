@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>جاویدنامان 🕊️🖤</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #080808;
+  color: #f3eee5;
+  font-family: Tahoma, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  padding: 55px 15px 30px;
+  border-bottom: 1px solid #4a1111;
+  background: radial-gradient(ellipse at top, #281010 0%, #080808 70%);
+}
+
+h1 {
+  color: #d8b66a;
+  font-size: 38px;
+  text-shadow: 0 0 18px #a90000;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  color: #c9bda8;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.gold-line {
+  width: 100px;
+  height: 2px;
+  background: #c9a44c;
+  margin: 22px auto;
+  box-shadow: 0 0 12px #c9a44c;
+}
+
+.container {
+  width: min(900px, 92%);
+  margin: 35px auto;
+}
+
+.search-box {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #8c2525;
+  border-radius: 12px;
+  background: #111;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  margin-bottom: 22px;
+  box-shadow: 0 0 12px #380b0b;
+}
+
+.search-box:focus {
+  border-color: #d8b66a;
+  box-shadow: 0 0 15px #7c2525;
+}
+
+.counter {
+  color: #c9a44c;
+  text-align: center;
+  margin-bottom: 22px;
+  font-size: 14px;
+}
+
+#namesList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.name-item {
+  background: linear-gradient(100deg, #111, #191010, #111);
+  border: 1px solid #552020;
+  border-right: 3px solid #a52a2a;
+  border-radius: 9px;
+  padding: 17px;
+  color: #e9d8b1;
+  font-size: 15px;
+  line-height: 1.9;
+  transition: .25s;
+}
+
+.name-item:hover {
+  border-color: #c9a44c;
+  box-shadow: 0 0 13px #641919;
+  transform: translateY(-2px);
+}
+
+.empty {
+  text-align: center;
+  color: #aaa;
+  padding: 30px;
+}
+
+footer {
+  margin-top: 55px;
+  padding: 35px 15px;
+  text-align: center;
+  border-top: 1px solid #552020;
+  color: #d8b66a;
+  line-height: 2.2;
+  background: #0d0909;
+}
+
+footer small {
+  display: block;
+  color: #8d8170;
+  margin-top: 12px;
+}
+
+@media(max-width: 500px) {
+  h1 { font-size: 29px; }
+  .name-item { font-size: 14px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>جاویدنامان</h1>
+  <div class="gold-line"></div>
+  <p class="subtitle">
+    یاد و نام آنان که برای آزادی و عدالت از میان ما رفتند
+    <br>
+    🕊️🖤
+  </p>
+</header>
+
+<main class="container">
+
+  <input
+    class="search-box"
+    id="searchInput"
+    type="search"
+    placeholder="جست‌وجوی نام جاویدنام..."
+    autocomplete="off"
+  >
+
+  <div class="counter" id="counter"></div>
+
+  <div id="namesList"></div>
+
+</main>
+
+<footer>
+  به یاد هزاران جاویدنام دیگر... 🕊️🖤
+  <small>یادشان گرامی و نامشان ماندگار</small>
+</footer>
+
+<script>
+const names = [
+  "مهسا امینی",
+  "فریدون محمودی",
+  "محسن محمدی",
+  "رضا لطفی",
+  "ایمان بهزادپور",
+  "میلاد استادهاشم",
+  "زکریا خیال",
+  "فرجاد درویشی",
+  "میلاد زارع",
+  "مینو مجیدی",
+  "فرزین لطفی",
+  "رضا شهپرنیا",
+  "ساسان باقری",
+  "نیکا شاکرمی",
+  "دیاکو مهرنوایی",
+  "صدرالدین لیتانی",
+  "دانش رهنما",
+  "امین معرفی",
+  "میلان حقیقی",
+  "محسن قیصری",
+  "غزاله چلاوی",
+  "عبدالله محمودپور",
+  "متین عبدالله‌پور",
+  "فؤاد قدیمی",
+  "علی مظفری",
+  "بهنام لایق‌پور",
+  "سعید محمدی",
+  "حنانه کیا",
+  "امیرعلی فولادی",
+  "ایمان محمدی",
+  "امیرحسین شمس",
+  "مهرداد قربانی",
+  "عرفان رضایی",
+  "مهدی عسگری",
+  "محمد فرمانی",
+  "یاسین جمالزاده",
+  "فریدون احمدی",
+  "پویا شیدا",
+  "مهراب نجفی",
+  "آرش پهلوان",
+  "محسن مال‌میر",
+  "سعید ایرانمنش",
+  "ابوالفضل اکبری‌دوست",
+  "عرفان خزایی",
+  "مهدی ببرنژاد",
+  "روشنا احمدی",
+  "ابوالفضل مهدی‌پور",
+  "محمد حسن ترکمان",
+  "حسینعلی کیا",
+  "محمد فلاح",
+  "سید سینا موسوی",
+  "فردین بختیاری",
+  "علیرضا فتحی",
+  "مهسا موگویی",
+  "سیدعباس میرموسوی",
+  "محسن محمدی کوچکسرایی",
+  "محمد زمانی",
+  "امیرحسین مهدوی",
+  "محمد زارعی",
+  "امیرحسین بساطی",
+  "محمد مام‌صالح",
+  "رامین فاتحی",
+  "مهدی زاهدی",
+  "شیرین علیزاده",
+  "سیاوش محمودی",
+  "اسماعیل حیدری",
+  "حسین مروتی",
+  "هدیه نعیمانی",
+  "سارینا اسماعیل‌زاده",
+  "حدیث نجفی",
+  "محمدجواد زاهدی"
+];
+
+function normalizeText(text) {
+  return text
+    .replace(/ي/g, "ی")
+    .replace(/ك/g, "ک")
+    .replace(/\u200c/g, "")
+    .trim()
+    .toLowerCase();
+}
+
+function renderNames(searchText = "") {
+  const list = document.getElementById("namesList");
+  const counter = document.getElementById("counter");
+  const query = normalizeText(searchText);
+
+  const filtered = names.filter(name =>
+    normalizeText(name).includes(query)
+  );
+
+  list.innerHTML = "";
+
+  counter.textContent =
+    `نمایش ${filtered.length} نام از ${names.length} نام`;
+
+  if (filtered.length === 0) {
+    list.innerHTML =
+      '<div class="empty">نامی پیدا نشد.</div>';
+    return;
+  }
+
+  filtered.forEach(name => {
+    const item = document.createElement("div");
+    item.className = "name-item";
+    item.textContent = `به یاد جاویدنام ${name} 🕊️🖤`;
+    list.appendChild(item);
+  });
+}
+
+document
+  .getElementById("searchInput")
+  .addEventListener("input", event => {
+    renderNames(event.target.value);
+  });
+
+renderNames();
+</script>
+
+</body>
+</html>
